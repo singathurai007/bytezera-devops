@@ -21,14 +21,17 @@ pipeline {
         }
 
         stage('Test FastAPI') {
-    steps {
-        bat '"%PYTHON%" -c "from app.main import app; print(app)"'
-    }
-}
+            steps {
+                bat '"%PYTHON%" -c "from app.main import app; print(app)"'
+            }
+        }
 
         stage('Deploy') {
             steps {
-                bat 'echo FastAPI deployment completed'
+                bat '''
+                taskkill /F /IM python.exe >nul 2>&1 || exit /B 0
+                start "" "%PYTHON%" -m uvicorn app.main:app --host 127.0.0.1 --port 8000
+                '''
             }
         }
     }
