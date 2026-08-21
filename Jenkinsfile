@@ -21,10 +21,11 @@ pipeline {
         }
 
         stage('Test FastAPI') {
-            steps {
-                bat '"%PYTHON%" -c "from app.main import app; print(app)"'
-            }
-        }
+    steps {
+        bat '"%PYTHON%" -c "from app.main import app; print(app)"'
+        bat 'curl -f http://127.0.0.1:8000/health'
+    }
+}
 
         stage('Deploy') {
             steps {
