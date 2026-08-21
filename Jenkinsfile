@@ -21,10 +21,10 @@ pipeline {
         }
 
         stage('Test FastAPI') {
-            steps {
-                bat '"%PYTHON%" -c "from app.main import app; print(\"FastAPI application test passed\")"'
-            }
-        }
+    steps {
+        bat '"%PYTHON%" -c "from app.main import app; print(app)"'
+    }
+}
 
         stage('Deploy') {
             steps {
