@@ -1,13 +1,16 @@
 
-name: Hello World
-
+name:Hello world
 on:
   push:
   workflow_dispatch:
-
 jobs:
   greet:
     runs-on: ubuntu-latest
     steps:
-      - name: Say Hello
-        run: echo "i am yeswaanth bro opppp"
+     -  name: Say hello
+     run: echo "vanakkam thurai"
+    
+
+  
+  
+  
